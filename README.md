@@ -1,33 +1,24 @@
-# 💖 Dailycutie - Daily Reminder & Entertainment App
+# 💖 Dailycutie - Daily Reminder & Music App
 
-A beautiful Progressive Web App (PWA) that combines daily reminders, music player, games, and utilities in one adorable package!
+A beautiful Progressive Web App (PWA) that combines daily reminders and music playback in one adorable kawaii package!
 
 ## ✨ Features
 
 ### 📅 Daily Reminders
 - **Add custom reminders** with date, time, and descriptions
 - **Recurring reminders** (daily, weekly, once)
-- **Visual timeline** showing when reminders are due
+- **Real-time notifications** when reminders are due
+- **Edit and manage** existing reminders
 - **Mark as complete** or delete reminders
 - **Persistent storage** - reminders saved locally
 
 ### 🎵 Music Player
-- **Upload and play audio files** (MP3, WAV, etc.)
+- **Upload and play audio files** (MP3, WAV, OGG, AAC, M4A, FLAC)
 - **Create playlists** with custom titles and artists
-- **Playback controls** (play, pause, next, previous)
-- **Progress bar** with real-time updates
+- **Playback controls** (play, pause, next, previous, loop)
+- **Real-time progress bar** with progress tracking
 - **Visual playlist** with easy navigation
-
-### 🎮 Games Collection
-- **Tic Tac Toe** - Classic strategy game with AI opponent
-- **Snake Game** - Retro arcade game (simplified version)
-- **Memory Game** - Test your memory skills
-- **Sliding Puzzle** - Number puzzle challenge
-
-### 📱 Utility Apps
-- **Weather App** - Check current conditions (ready for API integration)
-- **Notes App** - Quick note-taking with local storage
-- **Timer App** - Countdown timer with notifications
+- **Multiple file upload** with progress indicators
 
 ## 🚀 Installation
 

@@ -83,6 +83,8 @@ function showSection(sectionName) {
         loadReminders();
     } else if (sectionName === 'music') {
         loadPlaylist();
+    } else if (sectionName === 'apps') {
+        // Apps section removed
     }
 }
 
@@ -484,40 +486,7 @@ function formatFileSize(bytes) {
     return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
 }
 
-// ========================================
-// MINI APPS FUNCTIONS
-// ========================================
 
-function openWeatherApp() {
-    const weatherHTML = `
-        <h3>Weather App</h3>
-        <p>🌤️ Weather information coming soon!</p>
-        <p>You can integrate with services like OpenWeatherMap API for real weather data.</p>
-    `;
-    document.getElementById('game-container').innerHTML = weatherHTML;
-}
-
-function openNotesApp() {
-    const notesHTML = `
-        <h3>Notes App</h3>
-        <textarea id="notes" placeholder="Start writing..." style="width: 100%; height: 200px; padding: 1rem; border: 2px solid #ff6b9d; border-radius: 10px;">${localStorage.getItem('dailycutieNotes') || ''}</textarea>
-        <br><br>
-        <button onclick="saveNotes()">Save Notes</button>
-    `;
-    document.getElementById('game-container').innerHTML = notesHTML;
-}
-
-function openTimerApp() {
-    const timerHTML = `
-        <h3>Timer App</h3>
-        <div>
-            <input type="number" id="timerMinutes" placeholder="Minutes" min="1" max="60" style="padding: 0.5rem; margin-right: 1rem;">
-            <button onclick="startTimer()">Start Timer</button>
-        </div>
-        <div id="timerDisplay" style="font-size: 2rem; margin: 1rem 0; font-weight: bold; color: #ff6b9d;"></div>
-    `;
-    document.getElementById('game-container').innerHTML = timerHTML;
-}
 
 // ========================================
 // PWA INSTALLATION
