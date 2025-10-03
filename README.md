@@ -101,16 +101,11 @@ Dailycutie/
 4. Click any song to play
 5. Use controls to play/pause/next/previous
 
-### Playing Games
-1. Click **"Games"** tab
-2. Choose a game card
-3. Game loads below the grid
-4. Play and enjoy!
-
-### Using Utilities
-1. Click **"Apps"** tab
-2. Choose Weather, Notes, or Timer
-3. Each opens in the game area below
+### Using Your App
+1. **Navigate** between Reminders and Music tabs
+2. **Add reminders** for important events and tasks
+3. **Upload and play** your favorite music with loop functionality
+4. **Install as PWA** for native app experience with notifications
 
 ## 🔧 Customization
 
@@ -122,10 +117,10 @@ background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%);
 color: #ff6b9d; /* Primary pink */
 ```
 
-### Adding More Games
-1. Add game HTML structure to `app.js`
+### Adding More Features
+1. Add new functionality to `app.js`
 2. Create CSS styles in `styles.css`
-3. Add click handler in the games grid
+3. Add click handlers in the navigation
 
 ### Music File Support
 - MP3, WAV, OGG, AAC
