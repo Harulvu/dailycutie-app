@@ -1,0 +1,754 @@
+/* Dailycutie - Daily Reminder & Entertainment App Styles */
+
+/* ========================================
+   GENERAL STYLES
+   ======================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Comic Sans MS', 'Segoe UI', Roboto, sans-serif;
+    background: linear-gradient(135deg, #ffb3d1 0%, #ffc0cb 50%, #ffd9e6 100%);
+    background-attachment: fixed;
+    min-height: 100vh;
+    color: #333;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* Add floating hearts animation */
+body::before {
+    content: '💖';
+    position: fixed;
+    top: 10%;
+    left: 5%;
+    font-size: 2rem;
+    animation: float 6s ease-in-out infinite;
+    z-index: -1;
+}
+
+body::after {
+    content: '💕';
+    position: fixed;
+    top: 20%;
+    right: 8%;
+    font-size: 1.5rem;
+    animation: float 8s ease-in-out infinite reverse;
+    z-index: -1;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-20px) rotate(5deg); }
+}
+
+/* ========================================
+   DESKTOP WINDOW INTERFACE
+   ======================================== */
+
+.desktop-container {
+    background: linear-gradient(135deg, #ffb3d1 0%, #ffc0cb 50%, #ffd9e6 100%);
+    min-height: 100vh;
+    padding: 20px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.window {
+    width: 90%;
+    max-width: 1200px;
+    background: white;
+    border-radius: 15px 15px 0 0;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    border: 3px solid #ff6b9d;
+}
+
+.window-header {
+    background: linear-gradient(135deg, #ff6b9d, #ff8a80);
+    padding: 10px 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: white;
+    font-weight: 600;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.window-controls {
+    display: flex;
+    gap: 8px;
+}
+
+.control-btn {
+    width: 25px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.control-btn:hover {
+    background: rgba(255, 255, 255, 0.4);
+    transform: scale(1.1);
+}
+
+.window-title {
+    font-size: 1.2rem;
+    font-weight: 700;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.window-content {
+    background: rgba(255, 248, 250, 0.8);
+    min-height: 600px;
+}
+
+/* ========================================
+   NAVIGATION
+   ======================================== */
+
+.navbar {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.nav-brand h1 {
+    color: #ff6b9d;
+    font-size: 1.8rem;
+    font-weight: 700;
+}
+
+.nav-menu {
+    display: flex;
+    gap: 1rem;
+}
+
+.nav-btn {
+    background: none;
+    border: 2px solid transparent;
+    padding: 0.5rem 1rem;
+    border-radius: 25px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: #666;
+}
+
+.nav-btn:hover,
+.nav-btn.active {
+    background: #ff6b9d;
+    color: white;
+    border-color: #ff6b9d;
+}
+
+.nav-install button {
+    background: linear-gradient(135deg, #ff6b9d, #ff8a80);
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: transform 0.2s ease;
+}
+
+.nav-install button:hover {
+    transform: translateY(-2px);
+}
+
+/* ========================================
+   MAIN CONTENT
+   ======================================== */
+
+.main-content {
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.app-section {
+    display: none;
+    animation: fadeIn 0.5s ease;
+}
+
+.app-section.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid rgba(255, 107, 157, 0.3);
+}
+
+.section-header h2 {
+    color: #ff6b9d;
+    font-size: 2rem;
+    font-weight: 600;
+}
+
+/* ========================================
+   DAILY REMINDERS
+   ======================================== */
+
+.add-btn {
+    background: linear-gradient(135deg, #ff6b9d, #ff8a80);
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.add-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 107, 157, 0.4);
+}
+
+.reminders-container {
+    display: grid;
+    gap: 1.5rem;
+}
+
+.reminder-card {
+    background: white;
+    border-radius: 15px;
+    padding: 1.5rem;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    border-left: 5px solid #ff6b9d;
+}
+
+.reminder-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.reminder-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+}
+
+.reminder-title {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 0.5rem;
+}
+
+.reminder-time {
+    color: #ff6b9d;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.reminder-desc {
+    color: #666;
+    line-height: 1.5;
+    margin-bottom: 1rem;
+}
+
+.reminder-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.reminder-actions button {
+    background: none;
+    border: 1px solid #ddd;
+    padding: 0.5rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.reminder-actions button:hover {
+    background: #ff6b9d;
+    color: white;
+    border-color: #ff6b9d;
+}
+
+/* ========================================
+   MUSIC PLAYER
+   ======================================== */
+
+.music-player {
+    background: white;
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.player-controls {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.player-controls button {
+    background: #ff6b9d;
+    color: white;
+    border: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+}
+
+.player-controls button:hover {
+    transform: scale(1.1);
+    background: #ff8a80;
+}
+
+.player-controls button:nth-child(4) {
+    background: #ffa726;
+}
+
+.player-controls button:nth-child(4):hover {
+    background: #ff8a80;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 6px;
+    background: #eee;
+    border-radius: 3px;
+    margin: 1rem 0;
+    cursor: pointer;
+    position: relative;
+}
+
+.progress {
+    height: 100%;
+    background: linear-gradient(90deg, #ff6b9d, #ff8a80);
+    border-radius: 3px;
+    width: 0%;
+    transition: width 0.1s ease;
+}
+
+.song-info h3 {
+    color: #333;
+    margin-bottom: 0.5rem;
+}
+
+.song-info p {
+    color: #666;
+}
+
+.playlist {
+    margin-top: 2rem;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.playlist-item {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    border-bottom: 1px solid #eee;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.playlist-item:hover,
+.playlist-item.active {
+    background: rgba(255, 107, 157, 0.1);
+}
+
+.playlist-item img {
+    width: 40px;
+    height: 40px;
+    border-radius: 5px;
+    margin-right: 1rem;
+    object-fit: cover;
+}
+
+
+
+/* ========================================
+   APPS SECTION
+   ======================================== */
+
+.apps-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+}
+
+.app-card {
+    background: white;
+    border-radius: 15px;
+    padding: 1.5rem;
+    text-align: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+.app-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.app-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.app-card h3 {
+    color: #333;
+    margin-bottom: 0.5rem;
+}
+
+.app-card p {
+    color: #666;
+    margin-bottom: 1rem;
+}
+
+.app-card button {
+    background: #ff6b9d;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.app-card button:hover {
+    background: #ff8a80;
+}
+
+/* ========================================
+   MODALS
+   ======================================== */
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+}
+
+.modal-content {
+    background: white;
+    margin: 10% auto;
+    padding: 2rem;
+    border-radius: 15px;
+    width: 90%;
+    max-width: 500px;
+    position: relative;
+    animation: modalSlideIn 0.3s ease;
+}
+
+@keyframes modalSlideIn {
+    from { transform: translateY(-50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+.close {
+    position: absolute;
+    top: 1rem;
+    right: 1.5rem;
+    font-size: 2rem;
+    cursor: pointer;
+    color: #666;
+    transition: color 0.2s ease;
+}
+
+.close:hover {
+    color: #ff6b9d;
+}
+
+#reminderForm {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+#reminderForm input,
+#reminderForm textarea,
+#reminderForm select {
+    padding: 0.75rem;
+    border: 2px solid #eee;
+    border-radius: 10px;
+    font-size: 1rem;
+    transition: border-color 0.2s ease;
+}
+
+#reminderForm input:focus,
+#reminderForm textarea:focus,
+#reminderForm select:focus {
+    outline: none;
+    border-color: #ff6b9d;
+}
+
+#reminderForm textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+#reminderForm button[type="submit"] {
+    background: linear-gradient(135deg, #ff6b9d, #ff8a80);
+    color: white;
+    border: none;
+    padding: 1rem;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#reminderForm button[type="submit"]:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 107, 157, 0.4);
+}
+
+.upload-area {
+    border: 3px dashed #ff6b9d;
+    border-radius: 10px;
+    padding: 2rem;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-bottom: 1rem;
+}
+
+.upload-area:hover {
+    background: rgba(255, 107, 157, 0.05);
+    border-color: #ff8a80;
+}
+
+/* ========================================
+   MUSIC UPLOAD PREVIEW
+   ======================================== */
+
+#musicPreview {
+    margin-top: 1rem;
+}
+
+.audio-preview-item {
+    background: white;
+    border-radius: 10px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border-left: 4px solid #ff6b9d;
+}
+
+.audio-info {
+    margin-bottom: 1rem;
+}
+
+.audio-info strong {
+    color: #333;
+    font-size: 1.1rem;
+}
+
+.audio-info small {
+    color: #666;
+}
+
+.audio-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.song-title-input,
+.song-artist-input {
+    padding: 0.5rem;
+    border: 2px solid #eee;
+    border-radius: 5px;
+    font-size: 0.9rem;
+}
+
+.song-title-input:focus,
+.song-artist-input:focus {
+    outline: none;
+    border-color: #ff6b9d;
+}
+
+.add-song-btn {
+    background: linear-gradient(135deg, #ff6b9d, #ff8a80);
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.add-song-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 3px 10px rgba(255, 107, 157, 0.3);
+}
+
+/* ========================================
+   LOADING INDICATORS
+   ======================================== */
+
+.loading-progress {
+    margin: 1rem 0;
+}
+
+.loading-bar {
+    width: 100%;
+    height: 8px;
+    background: rgba(255, 107, 157, 0.2);
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 0.5rem;
+}
+
+.loading-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #ff6b9d, #ff8a80);
+    width: 0%;
+    transition: width 0.2s ease;
+    border-radius: 4px;
+}
+
+.loading small {
+    color: #666;
+    font-size: 0.8rem;
+}
+
+/* Loading state styling */
+.audio-preview-item.loading {
+    background: rgba(255, 107, 157, 0.05);
+    border-left-color: #ff8a80;
+}
+
+.audio-preview-item.loading .audio-info small {
+    color: #ff8a80;
+}
+
+/* ========================================
+   RESPONSIVE DESIGN
+   ======================================== */
+
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1rem;
+    }
+
+    .nav-menu {
+        order: 3;
+        width: 100%;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .nav-install {
+        order: 2;
+    }
+
+    .main-content {
+        padding: 1rem;
+    }
+
+    .section-header {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+    }
+
+    .section-header h2 {
+        font-size: 1.5rem;
+    }
+
+
+
+    .modal-content {
+        margin: 20% auto;
+        width: 95%;
+        padding: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .nav-btn {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.9rem;
+    }
+
+    .nav-install button {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.9rem;
+    }
+}
+
+
+
+/* ========================================
+   NOTIFICATIONS
+   ======================================== */
+
+@keyframes slideIn {
+    from { transform: translateX(100%); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes slideOut {
+    from { transform: translateX(0); opacity: 1; }
+    to { transform: translateX(100%); opacity: 0; }
+}
+
+/* ========================================
+   PWA INSTALL PROMPT
+   ======================================== */
+
+#installBtn {
+    display: none;
+}
+
+/* ========================================
+   ADDITIONAL RESPONSIVE STYLES
+   ======================================== */

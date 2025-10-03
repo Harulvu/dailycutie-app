@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dailycutie - Daily Reminder & Entertainment App</title>
+
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="manifest.json">
+
+    <!-- Favicon -->
+    <link rel="icon" href="icon-192.png" type="image/png">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- Theme color for mobile browsers -->
+    <meta name="theme-color" content="#ff6b9d">
+</head>
+<body>
+    <!-- Desktop Window Interface -->
+    <div class="desktop-container">
+        <div class="window">
+            <!-- Window Header -->
+            <div class="window-header">
+                <div class="window-controls">
+                    <span class="control-btn minimize" onclick="minimizeWindow()">─</span>
+                    <span class="control-btn maximize" onclick="maximizeWindow()">□</span>
+                    <span class="control-btn close" onclick="closeWindow()">×</span>
+                </div>
+                <div class="window-title">💖 Dailycutie.exe</div>
+            </div>
+
+            <!-- Window Content -->
+            <div class="window-content">
+                <!-- Navigation -->
+                <nav class="navbar">
+                    <div class="nav-brand">
+                        <h1>💖 Dailycutie</h1>
+                    </div>
+                    <div class="nav-menu">
+                        <button class="nav-btn active" onclick="showSection('reminders')">📅 Reminders</button>
+                        <button class="nav-btn" onclick="showSection('music')">🎵 Music</button>
+                        <button class="nav-btn" onclick="showSection('apps')">📱 Apps</button>
+                    </div>
+                    <div class="nav-install">
+                        <button id="installBtn" onclick="installApp()">💾 Install</button>
+                    </div>
+                </nav>
+
+                <!-- Main Content -->
+                <main class="main-content">
+                    <!-- Daily Reminders Section -->
+                    <section id="reminders-section" class="app-section active">
+                        <div class="section-header">
+                            <h2>📅 Daily Reminders</h2>
+                            <button class="add-btn" onclick="openReminderModal()">+ Add Reminder</button>
+                        </div>
+
+                        <div class="reminders-container">
+                            <div class="reminders-grid" id="remindersList">
+                                <!-- Reminders will be loaded here -->
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Music Player Section -->
+                    <section id="music-section" class="app-section">
+                        <div class="section-header">
+                            <h2>🎵 Music Player</h2>
+                            <button class="add-btn" onclick="openMusicModal()">+ Add Song</button>
+                        </div>
+
+                        <div class="music-player">
+                            <div class="player-controls">
+                                <button onclick="previousSong()">⏮️</button>
+                                <button onclick="togglePlay()" id="playBtn">▶️</button>
+                                <button onclick="nextSong()">⏭️</button>
+                                <button onclick="toggleLoop()" id="loopBtn" title="Toggle Loop">🔁</button>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress" id="progress"></div>
+                            </div>
+                            <div class="song-info">
+                                <h3 id="currentSong">No song selected</h3>
+                                <p id="currentArtist">Select a song to play</p>
+                            </div>
+                            <div class="playlist" id="playlist">
+                                <!-- Playlist items will be added here -->
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Apps Section -->
+                    <section id="apps-section" class="app-section">
+                        <div class="section-header">
+                            <h2>📱 App Collection</h2>
+                        </div>
+
+                        <div class="apps-grid">
+                            <div class="app-card">
+                                <div class="app-icon">📝</div>
+                                <h3>Notes App</h3>
+                                <p>Take quick notes</p>
+                                <button onclick="openNotesApp()">Open</button>
+                            </div>
+
+                            <div class="app-card">
+                                <div class="app-icon">🕒</div>
+                                <h3>Timer App</h3>
+                                <p>Set countdown timers</p>
+                                <button onclick="openTimerApp()">Open</button>
+                            </div>
+                        </div>
+                    </section>
+                </main>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modals -->
+    <!-- Reminder Modal -->
+    <div id="reminderModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeReminderModal()">&times;</span>
+            <h2>Add New Reminder</h2>
+            <form id="reminderForm">
+                <input type="text" id="reminderTitle" placeholder="Reminder title" required>
+                <textarea id="reminderDesc" placeholder="Description"></textarea>
+                <input type="datetime-local" id="reminderTime" required>
+                <select id="reminderRepeat">
+                    <option value="once">Once</option>
+                    <option value="daily">Daily</option>
+                    <option value="weekly">Weekly</option>
+                </select>
+                <button type="submit">Save Reminder</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Music Upload Modal -->
+    <div id="musicModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeMusicModal()">&times;</span>
+            <h2>Add Music</h2>
+            <div class="upload-area" onclick="document.getElementById('musicFile').click()">
+                <div class="upload-content">
+                    <p>🎵 Click to select audio files</p>
+                    <p class="upload-hint">Supported: MP3, WAV, OGG, AAC, M4A, FLAC</p>
+                    <p class="upload-hint">Multiple files supported • Drag & drop enabled</p>
+                </div>
+                <input type="file" id="musicFile" accept="audio/*" multiple style="display: none;" onchange="handleFileSelect(event)">
+            </div>
+            <div id="musicPreview"></div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="app.js"></script>
+</body>
+</html>
